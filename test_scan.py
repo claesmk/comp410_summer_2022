@@ -73,11 +73,11 @@ class ScanTests(unittest.TestCase):
     def test_name_recognition(self):
         # python -m spacy download en_core_web_sm
         try:
-            nlp = spacy.load("en_core_web_sm")
+            nlp = spacy.load("en_core_web_lg")
         except OSError:
             from spacy.cli import download
-            download("en_core_web_sm")
-            nlp = spacy.load("en_core_web_sm")
+            download("en_core_web_lg")
+            nlp = spacy.load("en_core_web_lg")
 
         # Create a sample string with a mix of things that look like they could be names
         names_string = 'Name: John Jones\nAddress: 123 John W Mitchell Drive\nNorth Carolina\nHarsh Mupali'
