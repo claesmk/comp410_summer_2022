@@ -111,14 +111,14 @@ class ScanTests(unittest.TestCase):
         # address_recognizer = PatternRecognizer(supported_entity="STREET_ADDRESS",
         #                                        deny_list=['123 John W Mitchell Drive'])
 
-        address_pattern = Pattern(name='address_pattern', regex=r'\d+ [A-Z][a-z]+ \w+', score=0.5)
+        address_pattern = Pattern(name='address_pattern', regex=r'(^|\s)\d+ [A-Z][a-z]+ \w+', score=0.5)
         address_recognizer = PatternRecognizer(supported_entity='STREET_ADDRESS', patterns=[address_pattern])
 
         twitter_pattern = Pattern(name='twitter_pattern', regex=r'\B@\w+|at [A-Z]+\w*', score=0.5)
         twitter_recognizer = PatternRecognizer(supported_entity='TWITTER_HANDLE', patterns=[twitter_pattern])
 
         extra_names_pattern = Pattern(name='extra_names_pattern',
-                                      regex=r'Jaden|Smith|Yuri|Krityan|Tatum', score=0.5)
+                                      regex=r'Jaden', score=0.9)
         extra_names_recognizer = PatternRecognizer(supported_entity='EXTRA_PERSON', patterns=[extra_names_pattern])
 
         credit_card_pattern = Pattern(name='credit_card_pattern', regex=r'\d{4}[- ]\d{4}[- ]\d{4}[- ]\d{4}', score=0.9)
