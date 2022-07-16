@@ -1,5 +1,5 @@
 import unittest
-from team1_pii import find_us_phone_numbers, find_us_street_address, find_twitter_handle, find_credit_card_number
+from team1_pii import find_us_phone_numbers, find_us_street_address, find_twitter_handle, find_credit_card_number, find_bank_acc_number, find_email_address
 
 
 class Team1TestCases(unittest.TestCase):
@@ -63,6 +63,30 @@ class Team1TestCases(unittest.TestCase):
 
         userName = 'powerade'
         self.assertFalse(find_twitter_handle(userName))
+
+    def test_bank_acc_number(self):
+        # Test valid bank account numbers
+        acc = '0123456789'
+        self.assertTrue(find_bank_acc_number(acc))
+
+        acc = '010234567891'
+        self.assertTrue(find_bank_acc_number(acc))
+
+        # Invalid Test
+        acc = '012.90.a89'
+        self.assertFalse(find_bank_acc_number(acc))
+
+    def test_email_address(self):
+        # Test valid email address
+        email = 'aBc12@email.com'
+        self.assertTrue(find_email_address(email))
+
+        email = 'ro1s3@email.com'
+        self.assertTrue(find_email_address(email))
+
+        # Invalid Test
+        email = '..nc12@email.com'
+        self.assertFalse(find_email_address(email))
 
 
 if __name__ == '__main__':

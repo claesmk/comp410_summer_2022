@@ -39,8 +39,13 @@ def get_file_text(file) -> list:
         # scan through all the worksheets
         for ws in wb:
             for row in ws.values:
+                # Save a row as a single line rather than adding each cell to a list
+                row_list = []
                 for value in row:
-                    file_text.append(value)
+                    # Don't add empty cells to the list
+                    if value is not None:
+                        row_list.append(value.rstrip(' '))
+                file_text.append(' '.join(row_list))
     elif ext.lower() == '.txt':
         # This is a text file
         with open(file) as f:
