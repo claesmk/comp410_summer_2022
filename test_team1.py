@@ -84,8 +84,17 @@ class Team1TestCases(unittest.TestCase):
         email = 'ro1s3@email.com'
         self.assertTrue(find_email_address(email))
 
+        email = 'jon@email.com is valid'
+        self.assertTrue(find_email_address(email))
+
+        email = 'my email is ro1s3@email.com and yours is next'
+        self.assertTrue(find_email_address(email))
+
+        email = 'and yours is joe@email.com'
+        self.assertTrue(find_email_address(email))
+
         # Invalid Test
-        email = '..nc12@email.com'
+        email = '..nc12@emailcom'
         self.assertFalse(find_email_address(email))
 
 
